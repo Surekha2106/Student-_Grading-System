@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Grade Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="app-body">
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <nav class="glass-nav">
+        <div class="nav-brand">GradeCalc<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-btn active" data-target="calculator-section">Calculator</a></li>
+            <li><a href="#" class="nav-btn" data-target="history-section">History</a></li>
+            <li><a href="#" class="nav-btn" data-target="profile-section">Profile</a></li>
+        </ul>
+        <div class="nav-user">
+            <span id="nav-user-name">User</span>
+            <button id="logout-btn" class="btn btn-outline btn-sm">Logout</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Calculator Section -->
+        <section id="calculator-section" class="glass-container app-section active">
+            <div class="section-header">
+                <h2>Grade Calculator</h2>
+                <p class="subtitle">Enter marks to calculate your final grade</p>
+            </div>
+
+            <div id="setup-section" class="input-group">
+                <label for="num-subjects">How many subjects do you want to calculate?</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="num-subjects" min="1" max="20" placeholder="e.g. 5" style="flex: 1;">
+                    <button type="button" id="generate-btn" class="btn btn-primary">Generate</button>
+                </div>
+            </div>
+
+            <form id="calc-form" class="calc-grid hidden">
+                <div id="dynamic-inputs">
+                    <!-- Dynamic subject inputs go here -->
+                </div>
+
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn-primary">Calculate Grade</button>
+                    <button type="button" id="reset-calc" class="btn btn-outline">Reset</button>
+                </div>
+            </form>
+
+            <div id="results-area" class="results-card hidden">
+                <div class="result-stats">
+                    <div class="stat-box">
+                        <span class="stat-label">Total Marks</span>
+                        <span class="stat-value" id="res-total">-- / 300</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Average</span>
+                        <span class="stat-value" id="res-avg">--%</span>
+                    </div>
+                </div>
+                <div class="grade-box">
+                    <span class="stat-label">Final Grade</span>
+                    <span class="grade-value" id="res-grade">-</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history-section" class="glass-container app-section">
+            <div class="section-header">
+                <h2>Calculation History</h2>
+                <p class="subtitle">Your previously saved grades</p>
+            </div>
+            
+            <div class="history-list-container">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Subjects</th>
+                            <th>Total</th>
+                            <th>Average</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-tbody">
+                        <!-- Filled by JS -->
+                    </tbody>
+                </table>
+                <div id="no-history-msg" class="empty-state hidden">
+                    <p>No calculation history found yet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile-section" class="glass-container app-section">
+            <div class="section-header">
+                <h2>User Profile</h2>
+                <p class="subtitle">Manage your account details</p>
+            </div>
+            
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <span id="profile-initial">U</span>
+                </div>
+                <div class="profile-details">
+                    <div class="detail-group">
+                        <label>Full Name</label>
+                        <p id="profile-name">Loading...</p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Email Address</label>
+                        <p id="profile-email">Loading...</p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Total Calculations</label>
+                        <p id="profile-stats">0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
